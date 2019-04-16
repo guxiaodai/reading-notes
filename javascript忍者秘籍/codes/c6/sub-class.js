@@ -1,3 +1,4 @@
+/*经典继承语法示例*/
 (function() {
     var initializing = false,
     superPattern = /xyz/.test(function() { xyz }) ? /\b_super\b/ : /.*/;
@@ -35,7 +36,21 @@
 var Person = Object.subClass({
   init: function(name) {
     this.name = name;
+  },
+  dance: function(isDancing) {
+    this.dance = isDancing;
   }
 });
 var p = new Person();
 console.log(p.constructor === Person);
+
+var Ninja = Person.subClass({
+  init: function(name) {
+    this.name = name;
+  },
+  dance: function() {
+    this.super(false)
+  }
+});
+
+var ninja = new Ninja('renzhe');
